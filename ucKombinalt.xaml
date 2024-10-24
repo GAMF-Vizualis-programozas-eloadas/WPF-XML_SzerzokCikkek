@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="WPF_XML_SzerzokCikkek.ucKombinalt"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_XML_SzerzokCikkek"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="800" IsVisibleChanged="ucKombinalt_IsVisibleChanged">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="70"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Label VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Margin="10">Cím</Label>
+		<ComboBox x:Name="cbSzerzők" ItemsSource="{Binding}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="10" SelectionChanged="cbSzerzők_SelectionChanged"/>
+		<Label VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Margin="10">Cikkek</Label>
+		<TextBox x:Name="tbCikkek" Grid.Row="1" Grid.Column="1" Margin="10,10,10,13" IsReadOnly="True" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Disabled" IsManipulationEnabled="True"/>
+	</Grid>
+</UserControl>

@@ -1,0 +1,95 @@
+<?xml version="1.0" standalone="yes"?>
+<dsAdatok xmlns="http://tempuri.org/dsXML.xsd">
+  <xs:schema id="dsAdatok" targetNamespace="http://tempuri.org/dsXML.xsd" xmlns:mstns="http://tempuri.org/dsXML.xsd" xmlns="http://tempuri.org/dsXML.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+    <xs:element name="dsAdatok" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="dtSzerzők">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="SzerzőID" type="xs:int" />
+                <xs:element name="Név" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="dtCikkek">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CikkID" type="xs:int" />
+                <xs:element name="Cím" type="xs:string" />
+                <xs:element name="URL" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="dtSzerzőkCikkek">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="SzerzőID" type="xs:int" minOccurs="0" />
+                <xs:element name="CikkID" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1">
+        <xs:selector xpath=".//mstns:dtSzerzők" />
+        <xs:field xpath="mstns:SzerzőID" />
+      </xs:unique>
+      <xs:unique name="Constraint2">
+        <xs:selector xpath=".//mstns:dtCikkek" />
+        <xs:field xpath="mstns:CikkID" />
+      </xs:unique>
+      <xs:keyref name="FK_dtSzerzők_dtSzerzőkCikkek" refer="Constraint1">
+        <xs:selector xpath=".//mstns:dtSzerzőkCikkek" />
+        <xs:field xpath="mstns:SzerzőID" />
+      </xs:keyref>
+      <xs:keyref name="FK_dtCikkek_dtSzerzőkCikkek" refer="Constraint2">
+        <xs:selector xpath=".//mstns:dtSzerzőkCikkek" />
+        <xs:field xpath="mstns:CikkID" />
+      </xs:keyref>
+    </xs:element>
+  </xs:schema>
+  <dtSzerzők>
+    <SzerzőID>1</SzerzőID>
+    <Név>Kocsis Zoltán Tamás</Név>
+  </dtSzerzők>
+  <dtSzerzők>
+    <SzerzőID>2</SzerzőID>
+    <Név>Kovács János</Név>
+  </dtSzerzők>
+  <dtSzerzők>
+    <SzerzőID>3</SzerzőID>
+    <Név>Tóth László</Név>
+  </dtSzerzők>
+  <dtCikkek>
+    <CikkID>1</CikkID>
+    <Cím>Informatikai kutatás a gerincsebészetben</Cím>
+    <URL>http://gradus.kefo.hu/current/2020-2/2020_2_CSC_002_Kocsis.pdf</URL>
+  </dtCikkek>
+  <dtCikkek>
+    <CikkID>2</CikkID>
+    <Cím>Kéztörésből felépülő páciens erőnlétének vizsgálata mems szenzor segítségével</Cím>
+    <URL>http://gradus.kefo.hu/archive/2020-1/2020_1_ENG_001_Toth.pdf</URL>
+  </dtCikkek>
+  <dtCikkek>
+    <CikkID>3</CikkID>
+    <Cím>A teniszben használt mozdulatok mozgáselemzése mems szenzorok segítségével neuro-motorikus betegségben szenvedő pácienseknél</Cím>
+    <URL>http://gradus.kefo.hu/archive/2019-1/2019_1_CSC_004_Toth.pdf</URL>
+  </dtCikkek>
+  <dtSzerzőkCikkek>
+    <SzerzőID>1</SzerzőID>
+    <CikkID>1</CikkID>
+  </dtSzerzőkCikkek>
+  <dtSzerzőkCikkek>
+    <SzerzőID>2</SzerzőID>
+    <CikkID>1</CikkID>
+  </dtSzerzőkCikkek>
+  <dtSzerzőkCikkek>
+    <SzerzőID>3</SzerzőID>
+    <CikkID>2</CikkID>
+  </dtSzerzőkCikkek>
+  <dtSzerzőkCikkek>
+    <SzerzőID>3</SzerzőID>
+    <CikkID>3</CikkID>
+  </dtSzerzőkCikkek>
+</dsAdatok>
