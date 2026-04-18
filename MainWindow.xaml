@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_XML_SzerzokCikkek"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Szerzők-Cikkek" Height="450" Width="800">
 	<DockPanel>
 		<Menu DockPanel.Dock="Top">
 			<MenuItem Header="Fájl">
@@ -19,7 +19,9 @@
 				<MenuItem Header="Kombinált" x:Name="miKombinált" Click="miKombinált_Click" ></MenuItem>
 			</MenuItem>
 		</Menu>
-		<DataGrid DockPanel.Dock="Top" x:Name="dgSzerzők" DataContext="{Binding}" Visibility="Collapsed"
+		<DataGrid DockPanel.Dock="Top" 
+							x:Name="dgSzerzők" 
+							DataContext="{Binding}" Visibility="Collapsed"
 								AutoGenerateColumns="False">
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="SzerzőID" Binding="{Binding SzerzőID}"/>
@@ -28,8 +30,10 @@
 		</DataGrid>
 		<DataGrid DockPanel.Dock="Top" x:Name="dgCikkek" DataContext="{Binding}" Visibility="Collapsed" AutoGenerateColumns="False">
 			<DataGrid.Columns>
-				<DataGridTextColumn Header="CikkID" Binding="{Binding CikkID}"/>
-				<DataGridTextColumn Header="Cím" Binding="{Binding Cím}"/>
+				<DataGridTextColumn Header="CikkID" 
+														Binding="{Binding CikkID}"/>
+				<DataGridTextColumn Header="Cím" 
+														Binding="{Binding Cím}"/>
 				<DataGridHyperlinkColumn Header="Elérhetőség" Binding="{Binding URL}"/>
 			</DataGrid.Columns>
 		</DataGrid>
