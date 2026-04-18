@@ -1,5 +1,4 @@
-# WPF-XML\_SzerzokCikkek
-# Szerzők–Cikkek nyilvántartó program
+# WPF-XML\_SzerzokCikkek - Szerzők–Cikkek nyilvántartó program
 
 
 
