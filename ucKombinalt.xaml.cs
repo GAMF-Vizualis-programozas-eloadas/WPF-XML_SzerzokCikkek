@@ -5,9 +5,6 @@ using WPF_Szerzok_Cikkek;
 
 namespace WPF_XML_SzerzokCikkek
 {
-	/// <summary>
-	/// Interaction logic for ucKombinalt.xaml
-	/// </summary>
 	public partial class ucKombinalt : UserControl
 	{
 		private dsAdatok? dsAdatok;

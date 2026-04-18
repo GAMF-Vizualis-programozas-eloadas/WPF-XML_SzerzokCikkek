@@ -20,7 +20,8 @@ namespace WPF_XML_SzerzokCikkek
 		{
 			try
 			{
-				dsAdatok.ReadXml("adatok.xml", XmlReadMode.Auto);
+				dsAdatok.ReadXml("..\\..\\..\\adatok.xml", XmlReadMode.IgnoreSchema);
+				MessageBox.Show("Adatok betöltve az adatok.xml fájlból.", "Sikeres betöltés", MessageBoxButton.OK, MessageBoxImage.Information);
 			}
 			catch (Exception)
 			{
@@ -28,7 +29,7 @@ namespace WPF_XML_SzerzokCikkek
 				var sz2 = dsAdatok.dtSzerzők.AdddtSzerzőkRow(2, "Kovács János");
 				var sz3 = dsAdatok.dtSzerzők.AdddtSzerzőkRow(3, "Tóth László");
 				var c1 = dsAdatok.dtCikkek.AdddtCikkekRow(1, "Informatikai kutatás a gerincsebészetben",
-					"http://gradus.kefo.hu/current/2020-2/2020_2_CSC_002_Kocsis.pdf");
+					"http://gradus.kefo.hu/archive/2020-2/2020_2_CSC_002_Kocsis.pdf");
 				var c2 = dsAdatok.dtCikkek.AdddtCikkekRow(2, "Kéztörésből felépülő páciens erőnlétének vizsgálata mems szenzor segítségével",
 					"http://gradus.kefo.hu/archive/2020-1/2020_1_ENG_001_Toth.pdf");
 				var c3 = dsAdatok.dtCikkek.AdddtCikkekRow(3, "A teniszben használt mozdulatok mozgáselemzése mems szenzorok segítségével neuro-motorikus betegségben szenvedő pácienseknél",
@@ -37,12 +38,24 @@ namespace WPF_XML_SzerzokCikkek
 				dsAdatok.dtSzerzőkCikkek.AdddtSzerzőkCikkekRow(sz2, c1);
 				dsAdatok.dtSzerzőkCikkek.AdddtSzerzőkCikkekRow(sz3, c2);
 				dsAdatok.dtSzerzőkCikkek.AdddtSzerzőkCikkekRow(sz3, c3);
+				MessageBox.Show("Sikertelen betöltés! Adatbázis alapértelmezett adatokkal létrehozva.", "Hiba", 
+					MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
 		private void miMentés_Click(object sender, RoutedEventArgs e)
 		{
-			dsAdatok.WriteXml("adatok.xml", XmlWriteMode.WriteSchema);
+			try
+			{
+				dsAdatok.WriteXml("..\\..\\..\\adatok.xml", XmlWriteMode.IgnoreSchema);
+				MessageBox.Show("Adatok mentve az adatok.xml fájlba.", "Sikeres mentés", 
+					MessageBoxButton.OK, MessageBoxImage.Information);	
+			}
+			catch (Exception exc)
+			{
+				MessageBox.Show("Sikertelen mentés!"+exc.Message, "OK",MessageBoxButton.OK, 
+					MessageBoxImage.Error);
+			}
 		}
 
 		private void miKilépés_Click(object sender, RoutedEventArgs e)
@@ -53,7 +66,7 @@ namespace WPF_XML_SzerzokCikkek
 		private void miSzerzők_Click(object sender, RoutedEventArgs e)
 		{
 			dgCikkek.Visibility = Visibility.Collapsed;
-			ucKombinalt.Visibility = Visibility.Collapsed;
+			ucKombinált.Visibility = Visibility.Collapsed;
 			dgSzerzők.Visibility = Visibility.Visible;
 			dgSzerzők.ItemsSource = dsAdatok.dtSzerzők;
 		}
@@ -61,7 +74,7 @@ namespace WPF_XML_SzerzokCikkek
 		private void miCikkek_Click(object sender, RoutedEventArgs e)
 		{
 			dgSzerzők.Visibility = Visibility.Collapsed;
-			ucKombinalt.Visibility = Visibility.Collapsed;
+			ucKombinált.Visibility = Visibility.Collapsed;
 			dgCikkek.Visibility = Visibility.Visible;
 			dgCikkek.ItemsSource = dsAdatok.dtCikkek;
 		}
@@ -70,12 +83,14 @@ namespace WPF_XML_SzerzokCikkek
 		{
 			dgSzerzők.Visibility = Visibility.Collapsed;
 			dgCikkek.Visibility = Visibility.Collapsed;
-			ucKombinalt.Visibility = Visibility.Visible;
+			ucKombinált.Visibility = Visibility.Visible;
 		}
 
-		private void dgCikkek_Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+		private void dgCikkek_Hyperlink_RequestNavigate(object sender, 
+				RequestNavigateEventArgs e)
 		{
-			Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
+			Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) 
+				{ UseShellExecute = true });
 			e.Handled = true;
 		}
 	}

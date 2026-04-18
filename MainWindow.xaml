@@ -9,14 +9,14 @@
 	<DockPanel>
 		<Menu DockPanel.Dock="Top">
 			<MenuItem Header="Fájl">
-				<MenuItem Header="Betöltés" x:Name="miBetöltés" Click="miBetöltés_Click" ></MenuItem>
-				<MenuItem Header="Mentés" x:Name="miMentés" Click="miMentés_Click" ></MenuItem>
-				<MenuItem Header="Kilépés" x:Name="miKilépés" Click="miKilépés_Click" ></MenuItem>
+				<MenuItem Header="Betöltés" x:Name="miBetöltés" Click="miBetöltés_Click" />
+				<MenuItem Header="Mentés" x:Name="miMentés" Click="miMentés_Click" />
+				<MenuItem Header="Kilépés" x:Name="miKilépés" Click="miKilépés_Click" />
 			</MenuItem>
 			<MenuItem Header="Böngészés">
-				<MenuItem Header="Szerzők" x:Name="miSzerzők" Click="miSzerzők_Click" ></MenuItem>
-				<MenuItem Header="Cikkek" x:Name="miCikkek" Click="miCikkek_Click" ></MenuItem>
-				<MenuItem Header="Kombinált" x:Name="miKombinált" Click="miKombinált_Click" ></MenuItem>
+				<MenuItem Header="Szerzők" x:Name="miSzerzők" Click="miSzerzők_Click" />
+				<MenuItem Header="Cikkek" x:Name="miCikkek" Click="miCikkek_Click" />
+				<MenuItem Header="Kombinált" x:Name="miKombinált" Click="miKombinált_Click" />
 			</MenuItem>
 		</Menu>
 		<DataGrid DockPanel.Dock="Top" 
@@ -44,6 +44,6 @@
 				</DataGridHyperlinkColumn>
 			</DataGrid.Columns>
 		</DataGrid>
-		<local:ucKombinalt x:Name="ucKombinalt" Visibility="Collapsed" />
+		<local:ucKombinalt x:Name="ucKombinált" Visibility="Collapsed" />
 	</DockPanel>
 </Window>
