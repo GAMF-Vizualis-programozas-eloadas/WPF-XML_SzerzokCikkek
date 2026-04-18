@@ -1,5 +1,7 @@
 ﻿using System.Data;
+using System.Diagnostics;
 using System.Windows;
+using System.Windows.Navigation;
 using WPF_Szerzok_Cikkek;
 
 namespace WPF_XML_SzerzokCikkek
@@ -69,6 +71,12 @@ namespace WPF_XML_SzerzokCikkek
 			dgSzerzők.Visibility = Visibility.Collapsed;
 			dgCikkek.Visibility = Visibility.Collapsed;
 			ucKombinalt.Visibility = Visibility.Visible;
+		}
+
+		private void dgCikkek_Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+		{
+			Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
+			e.Handled = true;
 		}
 	}
 }

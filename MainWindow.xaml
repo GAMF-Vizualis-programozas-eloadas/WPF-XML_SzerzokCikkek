@@ -34,9 +34,16 @@
 														Binding="{Binding CikkID}"/>
 				<DataGridTextColumn Header="Cím" 
 														Binding="{Binding Cím}"/>
-				<DataGridHyperlinkColumn Header="Elérhetőség" Binding="{Binding URL}"/>
+				<DataGridHyperlinkColumn Header="Elérhetőség" Binding="{Binding URL}">
+					<DataGridHyperlinkColumn.ElementStyle>
+						<Style TargetType="TextBlock">
+							<EventSetter Event="Hyperlink.RequestNavigate" 
+                       Handler="dgCikkek_Hyperlink_RequestNavigate"/>
+						</Style>
+					</DataGridHyperlinkColumn.ElementStyle>
+				</DataGridHyperlinkColumn>
 			</DataGrid.Columns>
 		</DataGrid>
-		<local:ucKombinalt x:Name="ucKombinalt" Visibility="Collapsed"></local:ucKombinalt>
+		<local:ucKombinalt x:Name="ucKombinalt" Visibility="Collapsed" />
 	</DockPanel>
 </Window>
