@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WPF_Szerzok_Cikkek;
 
 namespace WPF_XML_SzerzokCikkek
@@ -22,7 +10,7 @@ namespace WPF_XML_SzerzokCikkek
 	/// </summary>
 	public partial class ucKombinalt : UserControl
 	{
-		private dsAdatok dsAdatok;
+		private dsAdatok? dsAdatok;
 		public ucKombinalt()
 		{
 			InitializeComponent();
@@ -30,6 +18,7 @@ namespace WPF_XML_SzerzokCikkek
 
 		private void cbSzerzők_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+			if(dsAdatok == null) return;
 			var Szerző = (cbSzerzők.SelectedItem as DataRowView)?.Row as
 				dsAdatok.dtSzerzőkRow;
 			var Cikkek = from x in dsAdatok.dtSzerzőkCikkek
@@ -53,6 +42,7 @@ namespace WPF_XML_SzerzokCikkek
 		{
 			if (!IsVisible) return;
 			dsAdatok = Application.Current.Properties["dsAdatok"] as dsAdatok;
+			if (dsAdatok == null) return;
 			cbSzerzők.ItemsSource = dsAdatok?.dtSzerzők;
 			cbSzerzők.DisplayMemberPath = "Név";
 			cbSzerzők.SelectedIndex = 0;
